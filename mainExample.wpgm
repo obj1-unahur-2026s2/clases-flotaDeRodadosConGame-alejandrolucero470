@@ -16,3 +16,71 @@ program PepitaGame {
 
 	game.start()
 }
+
+class Corsa {
+	const color
+
+	method capacidad() = 4
+	method velocidaddMax() = 150
+	method peso() = 1300
+}
+
+const corsaRojo = new Corsa(color = rojo)
+
+class Kwid {
+	const color = azul
+	const tanqueAdicional = false
+
+	method capacidad() = if(tanqueAdicional) 3 else 4
+	method velocidadMax() = if(tanqueAdicional) 120 else 110
+	method peso() = 1200 + if(tanqueAdicional) 150 else 0
+}
+
+object trafic {
+	var interior = comodo
+	var capacidad = 5
+
+}
+
+class Especiale {
+	const capacidad 
+	const velocidadMax 
+	const peso
+	const color 
+
+	method capacidad() = capacidad
+	method velocidadMax() = velocidadMax
+	method peso() = peso
+	method color() = color
+
+}
+
+class Dependencia {
+	const flota = []
+	var cantidadDeEmpleados
+	
+	method agregarFlota(rodado) = flota.add(rodado)
+	method quitarDeFlota(rodado) = flota.remove(rodado)
+	method cantidadDeEmpleados() = cantidadDeEmpleados
+	method pesoTotalFlota() = flota.sum({r=>r.peso()})
+	method estaBienEquipada() 
+
+
+
+	method capacidadTotalEnColor(color) {
+		return self.rodadoDeColor(color).sum({r=>r.capacidad()})
+	}
+	method rodadoDeColor(color) {
+	  return flota.filter({r=>r.edad()})
+	}
+
+	method capacidadFaltante() {
+	  return self.cantidadDeEmpleados() -
+	   self.capacidadTotalDeFlota().sum()
+	}
+
+	method capacidadTotalDeFlota() {
+	  return flota.sum()
+	}
+
+}
